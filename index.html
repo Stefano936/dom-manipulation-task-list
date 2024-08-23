@@ -6,7 +6,7 @@
     <script src="app.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body>
+  <body onload="loadTasks();">
     <div class="main">
       <section class="main__section">
         <div class="main-section__info">
@@ -15,9 +15,9 @@
           <br />
           <hr style="border-top: 1px solid black" />
         </div>
-        <ul></ul>
+        <ul class="main-section__taskboard"></ul>
       </section>
-      <form class="main__form">
+      <form class="main__form" onsubmit="addTaskHandler(event)">
         <div class="main__form__body">
           <h2>Task Manager 📝</h2>
           <h3>Please, fill the form and add a task...</h3>
@@ -27,32 +27,32 @@
           <div class="main__form__line">
             <div class="main__form__item">
               <label>Task Name</label>
-              <input id="nameInput" required type="text" />
+              <input id="nameInput" placeholder="Nombre de la tarea" required type="text" />
             </div>
           </div>
           <div class="main__form__line">
             <div class="main__form__item">
               <label>Task Owner</label>
-              <input id="ownerInput" required type="text" />
+              <input id="ownerInput" placeholder="John Doe" required type="text" />
             </div>
           </div>
           <div class="main__form__line">
             <div class="main__form__item">
               <label>Task Description</label>
-              <input id="descriptionInput" required type="text" />
+              <input id="descriptionInput" placeholder="Descripción de la tarea" required type="text" />
             </div>
           </div>
           <div class="main__form__line">
             <div class="main__form__item">
               <label>Task Image URL</label>
-              <input id="imgUrlInput" required type="text" />
+              <input name="imgUrlInput" placeholder="https://example.com/image.jpg" type="url" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" required>
             </div>
           </div>
           <br />
         </div>
         <div class="main__form__buttons">
           <button type="submit" class="submit-button">Add Task</button>
-          <button class="clear-button">Clear Tasks</button>
+          <button class="clear-button" onclick="deleteAllTaskHandler();">Clear Tasks</button>
         </div>
       </form>
     </div>
